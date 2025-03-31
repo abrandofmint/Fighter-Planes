@@ -415,6 +415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab1: {fileID: 2004101699616173818, guid: b639e390dc7fdda41b1aae6a52947ce8, type: 3}
+  enemyPrefab2: {fileID: 1540695086}
 --- !u!4 &834250522
 Transform:
   m_ObjectHideFlags: 0
@@ -514,6 +515,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1540695086 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1804528186260357491, guid: f85f89dc6a0ea6b4ea83f7fac7295d2c, type: 3}
+  m_PrefabInstance: {fileID: 1825917439601944954}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1745094787
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -569,6 +575,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyOne
       objectReference: {fileID: 0}
+    - target: {fileID: 5599645188718417706, guid: b639e390dc7fdda41b1aae6a52947ce8, type: 3}
+      propertyPath: enemySpeed
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b639e390dc7fdda41b1aae6a52947ce8, type: 3}
 --- !u!1001 &1825917439601944954
@@ -581,6 +591,10 @@ PrefabInstance:
     - target: {fileID: 1804528186260357491, guid: f85f89dc6a0ea6b4ea83f7fac7295d2c, type: 3}
       propertyPath: m_Name
       value: EnemyTwo
+      objectReference: {fileID: 0}
+    - target: {fileID: 6327280070812367833, guid: f85f89dc6a0ea6b4ea83f7fac7295d2c, type: 3}
+      propertyPath: enemySpeed
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8932273433669923392, guid: f85f89dc6a0ea6b4ea83f7fac7295d2c, type: 3}
       propertyPath: m_RootOrder
