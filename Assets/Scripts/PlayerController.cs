@@ -45,6 +45,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void PickupCoin()
+    {
+        gameManager.AddScore(1);
+    }
+
     void Shooting()
     {
         if(Input.GetKeyDown(KeyCode.Space))
