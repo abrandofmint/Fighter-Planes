@@ -1,11 +1,9 @@
 fileFormatVersion: 2
-guid: 25e93790e582f36479f06f27d3d9e20c
+guid: f62c54f11f389f2458ff7c03f3db9a18
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - enemyPrefab1: {fileID: 2004101699616173818, guid: b639e390dc7fdda41b1aae6a52947ce8, type: 3}
-  - enemyPrefab2: {fileID: 1804528186260357491, guid: f85f89dc6a0ea6b4ea83f7fac7295d2c, type: 3}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
