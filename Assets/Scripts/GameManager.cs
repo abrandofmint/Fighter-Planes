@@ -48,12 +48,12 @@ public class GameManager : MonoBehaviour
 
     void CreateCoin()
     {
-        Instantiate(coinPrefab, new Vector3(Random.Range(-horizontalScreenSize, horizontalScreenSize) * 0.85f, Random.Range(-verticalScreenSize, verticalScreenSize) * 0.85f, 0), Quaternion.identity);
+        Instantiate(coinPrefab, new Vector3(Random.Range(-horizontalScreenSize, horizontalScreenSize) * 0.65f, Random.Range(-verticalScreenSize, verticalScreenSize) * 0.65f, 0), Quaternion.identity);
     }
 
     void CreateHealthPowerup()
     {
-        Instantiate(healthPrefab, new Vector3(Random.Range(-horizontalScreenSize, horizontalScreenSize) * 0.85f, Random.Range(-verticalScreenSize, verticalScreenSize) * 0.85f, 0), Quaternion.identity);
+        Instantiate(healthPrefab, new Vector3(Random.Range(-horizontalScreenSize, horizontalScreenSize) * 0.65f, Random.Range(-verticalScreenSize, verticalScreenSize) * 0.65f, 0), Quaternion.identity);
     }
 
 void CreateSky()

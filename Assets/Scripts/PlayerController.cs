@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
 
     public void GainALife()
     {
-        if (lives <= 3)
+        if (lives < 3)
         {
             lives++;
             gameManager.ChangeLivesText(lives);
