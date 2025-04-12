@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 591261572054598399}
   - component: {fileID: 1039479969715957868}
   - component: {fileID: 8467618697582772559}
-  - component: {fileID: 5489046097513045939}
   - component: {fileID: -4532004508690926856}
+  - component: {fileID: -3707127826545714673}
   m_Layer: 0
   m_Name: Explosion
   m_TagString: Untagged
@@ -108,18 +108,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5489046097513045939
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1886710396827344234}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df453bed836fdd24fa5203ac0bcec333, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &-4532004508690926856
 AudioSource:
   m_ObjectHideFlags: 0
@@ -132,7 +120,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ec48bc6fd0610e74090bfad745853ad5, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.503
+  m_Volume: 0.299
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -216,3 +204,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-3707127826545714673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886710396827344234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1406eecb18ea14843823198931a0c2f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyTime: 2.5

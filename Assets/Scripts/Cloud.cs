@@ -21,6 +21,7 @@ public class Cloud : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        speed *= gameManager.cloudMove;
         transform.Translate(Vector3.down * speed * Time.deltaTime);
 
         if (transform.position.y < -gameManager.verticalScreenSize)
