@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
 
     public int lives;
+    public int shields;
     private float speed;
     private int weaponType;
 
@@ -23,9 +24,11 @@ public class PlayerController : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         lives = 3;
+        shields = 0;
         speed = 5.0f;
         gameManager.ChangeLivesText(lives);
         weaponType = 1;
+        gameManager.ChangeShieldsText(shields);
     }
 
     // Update is called once per frame
@@ -47,6 +50,14 @@ public class PlayerController : MonoBehaviour
             gameManager.GameOver();
             Destroy(this.gameObject);
         }
+    }
+
+    public void LoseShields()
+    {
+        //shields = shields - 1;
+        //shields -= 1;
+        shields--;
+        gameManager.ChangeShieldsText(lives);
     }
 
     public void PickupCoin()
@@ -114,6 +125,16 @@ public class PlayerController : MonoBehaviour
             gameManager.ManagePowerupText(whichPowerup);
         }
     }
+
+    public void GainShields()
+    {
+        if (shields == 0)
+        {
+            shields++;
+            gameManager.ChangeShieldsText(shields);
+        }
+    }
+
 
     void Shooting()
     {

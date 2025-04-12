@@ -168,6 +168,8 @@ MonoBehaviour:
   livesText: {fileID: 999943548}
   scoreText: {fileID: 660247267}
   powerUpText: {fileID: 367542160}
+  shieldPrefab: {fileID: 7230327021261361319, guid: 75e133ae5bfe890488f309868abe81eb, type: 3}
+  shieldsText: {fileID: 472744006}
   horizontalScreenSize: 0
   verticalScreenSize: 0
   score: 0
@@ -245,7 +247,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 'Shields: '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

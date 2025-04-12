@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public GameObject coinPrefab;
     public GameObject healthPrefab;
     public GameObject powerUpPrefab;
+    public GameObject shieldPrefab;
     public GameObject gameOverText;
     public GameObject restartText;
     public GameObject audioPlayer;
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI livesText;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI powerUpText;
+    public TextMeshProUGUI shieldsText;
 
     public float horizontalScreenSize;
     public float verticalScreenSize;
@@ -51,6 +53,7 @@ public class GameManager : MonoBehaviour
         InvokeRepeating("CreateHealthPowerup", 15, 10);
         StartCoroutine(SpawnPowerup());
         powerUpText.text = "";
+        InvokeRepeating("CreateShieldPowerup", 20, 7);
     }
 
     // Update is called once per frame
@@ -112,6 +115,11 @@ public class GameManager : MonoBehaviour
         CreatePowerup();
         StartCoroutine(SpawnPowerup());
     }
+    
+        void CreateShieldPowerup()
+    {
+        Instantiate(shieldPrefab, new Vector3(Random.Range(-horizontalScreenSize, horizontalScreenSize) * 0.65f, Random.Range(-verticalScreenSize, verticalScreenSize) * 0.65f, 0), Quaternion.identity);
+    }
 
     void CreateSky()
     {
@@ -160,4 +168,9 @@ public class GameManager : MonoBehaviour
         cloudMove = 0;
     }
 
+
+    public void ChangeShieldsText(int shields)
+    {
+        shieldsText.text = "Shields: " + shields;
+    }
 }
