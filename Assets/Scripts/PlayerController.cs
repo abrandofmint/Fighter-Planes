@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public int lives;
     public int shields;
     private float speed;
+    private int weaponType;
 
     private GameManager gameManager;
 
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject bulletPrefab;
     public GameObject explosionPrefab;
+    public GameObject thrusterPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +27,7 @@ public class PlayerController : MonoBehaviour
         shields = 0;
         speed = 5.0f;
         gameManager.ChangeLivesText(lives);
+        weaponType = 1;
         gameManager.ChangeShieldsText(shields);
     }
 
@@ -44,6 +47,7 @@ public class PlayerController : MonoBehaviour
         if (lives == 0)
         {
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            gameManager.GameOver();
             Destroy(this.gameObject);
         }
     }
@@ -58,6 +62,7 @@ public class PlayerController : MonoBehaviour
 
     public void PickupCoin()
     {
+        gameManager.PlaySound(4);
         gameManager.AddScore(1);
     }
 
@@ -67,6 +72,57 @@ public class PlayerController : MonoBehaviour
         {
             lives++;
             gameManager.ChangeLivesText(lives);
+        }
+        gameManager.PlaySound(3);
+    }
+
+    IEnumerator SpeedPowerDown()
+    {
+        yield return new WaitForSeconds(3f);
+        speed = 5f;
+        thrusterPrefab.SetActive(false);
+        gameManager.ManagePowerupText(0);
+        gameManager.PlaySound(2);
+    }
+
+    IEnumerator WeaponPowerDown()
+    {
+        yield return new WaitForSeconds(3f);
+        weaponType = 1;
+        gameManager.ManagePowerupText(0);
+        gameManager.PlaySound(2);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Powerup")
+        {
+            Destroy(collision.gameObject);
+            int whichPowerup = Random.Range(1, 5);
+            gameManager.PlaySound(1);
+            switch (whichPowerup)
+            {
+                case 1:
+                    //Speed
+                    speed = 10f;
+                    StartCoroutine(SpeedPowerDown());
+                    thrusterPrefab.SetActive(true);
+                    break;
+                case 2:
+                    //double weapon
+                    weaponType = 2;
+                    StartCoroutine(WeaponPowerDown());
+                    break;
+                case 3:
+                    //triple weapon
+                    weaponType = 3;
+                    StartCoroutine(WeaponPowerDown());
+                    break;
+                case 4:
+                    //shield
+                    break;
+            }
+            gameManager.ManagePowerupText(whichPowerup);
         }
     }
 
@@ -84,7 +140,26 @@ public class PlayerController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(bulletPrefab, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
+            switch (weaponType)
+            {
+                case 1:
+                    // Single
+                    Instantiate(bulletPrefab, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
+                    break;
+                case 2:
+                    // Double
+                    Instantiate(bulletPrefab, transform.position + new Vector3(-0.5f, 0.5f, 0), Quaternion.identity);
+                    Instantiate(bulletPrefab, transform.position + new Vector3(0.5f, 0.5f, 0), Quaternion.identity);
+                    break;
+                case 3:
+                    // Triple
+                    Instantiate(bulletPrefab, transform.position + new Vector3(-0.5f, 0.5f, 0), Quaternion.Euler(0, 0, 45));
+                    Instantiate(bulletPrefab, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
+                    Instantiate(bulletPrefab, transform.position + new Vector3(0.5f, 0.5f, 0), Quaternion.Euler(0, 0, -45));
+                    break;
+            }
+
+            
         }
     }
 
