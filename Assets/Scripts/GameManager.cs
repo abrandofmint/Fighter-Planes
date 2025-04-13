@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
         InvokeRepeating("CreateHealthPowerup", 15, 10);
         StartCoroutine(SpawnPowerup());
         powerUpText.text = "";
-        InvokeRepeating("CreateShieldPowerup", 20, 7);
+        //InvokeRepeating("CreateShieldPowerup", 20, 7);
     }
 
     // Update is called once per frame
@@ -98,9 +98,6 @@ public class GameManager : MonoBehaviour
             case 3:
                 powerUpText.text = "Triple Weapon!";
                 break;
-            case 4:
-                powerUpText.text = "Shield!";
-                break;
             default:
                 powerUpText.text = "";
                 break;
@@ -115,12 +112,12 @@ public class GameManager : MonoBehaviour
         CreatePowerup();
         StartCoroutine(SpawnPowerup());
     }
-    
-        void CreateShieldPowerup()
+    /*
+    void CreateShieldPowerup()
     {
         Instantiate(shieldPrefab, new Vector3(Random.Range(-horizontalScreenSize, horizontalScreenSize) * 0.65f, Random.Range(-verticalScreenSize, verticalScreenSize) * 0.65f, 0), Quaternion.identity);
     }
-
+    */
     void CreateSky()
     {
         for (int i = 0; i < 30; i++)
@@ -169,8 +166,16 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void ChangeShieldsText(int shields)
+    public void ChangeShieldsText(bool active)
     {
-        shieldsText.text = "Shields: " + shields;
+        if (active)
+        {
+            shieldsText.text = "Shield Active!";
+        }
+        else
+        {
+            shieldsText.text = "";
+        }
+        
     }
 }

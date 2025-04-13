@@ -6,9 +6,10 @@ public class PlayerController : MonoBehaviour
 {
 
     public int lives;
-    public int shields;
+    //public int shields;
     private float speed;
     private int weaponType;
+    private bool shieldActive;
 
     private GameManager gameManager;
 
@@ -18,17 +19,20 @@ public class PlayerController : MonoBehaviour
     public GameObject bulletPrefab;
     public GameObject explosionPrefab;
     public GameObject thrusterPrefab;
+    public GameObject shieldPrefab;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         lives = 3;
-        shields = 0;
+        //shields = 0;
         speed = 5.0f;
         gameManager.ChangeLivesText(lives);
         weaponType = 1;
-        gameManager.ChangeShieldsText(shields);
+        shieldActive = false;
+        shieldPrefab.SetActive(false);
+        gameManager.ChangeShieldsText(shieldActive);
     }
 
     // Update is called once per frame
@@ -42,23 +46,32 @@ public class PlayerController : MonoBehaviour
     {
         //lives = lives - 1;
         //lives -= 1;
-        lives--;
-        gameManager.ChangeLivesText(lives);
-        if (lives == 0)
+        if (shieldActive)
         {
-            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-            gameManager.GameOver();
-            Destroy(this.gameObject);
+            shieldActive = false;
+            shieldPrefab.SetActive(false);
+            gameManager.ChangeShieldsText(shieldActive);
+        }
+        else
+        {
+            lives--;
+            gameManager.ChangeLivesText(lives);
+            if (lives == 0)
+            {
+                Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+                gameManager.GameOver();
+                Destroy(this.gameObject);
+            }
         }
     }
-
+    /*
     public void LoseShields()
     {
         //shields = shields - 1;
         //shields -= 1;
         shields--;
         gameManager.ChangeShieldsText(lives);
-    }
+    }*/
 
     public void PickupCoin()
     {
@@ -99,6 +112,7 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(collision.gameObject);
             int whichPowerup = Random.Range(1, 5);
+            //whichPowerup = 4;
             gameManager.PlaySound(1);
             switch (whichPowerup)
             {
@@ -120,12 +134,15 @@ public class PlayerController : MonoBehaviour
                     break;
                 case 4:
                     //shield
+                    shieldActive = true;
+                    shieldPrefab.SetActive(true);
+                    gameManager.ChangeShieldsText(shieldActive);
                     break;
             }
             gameManager.ManagePowerupText(whichPowerup);
         }
     }
-
+    /*
     public void GainShields()
     {
         if (shields == 0)
@@ -133,7 +150,7 @@ public class PlayerController : MonoBehaviour
             shields++;
             gameManager.ChangeShieldsText(shields);
         }
-    }
+    }*/
 
 
     void Shooting()

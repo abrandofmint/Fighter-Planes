@@ -9,7 +9,7 @@ public class ShieldPowerup : MonoBehaviour
     {
         Destroy(this.gameObject, 4.5f);
     }
-
+    /*
     private void OnTriggerEnter2D(Collider2D whatDidIHit)
     {
         if (whatDidIHit.tag == "Player")
@@ -17,5 +17,5 @@ public class ShieldPowerup : MonoBehaviour
             whatDidIHit.GetComponent<PlayerController>().GainShields();
             Destroy(this.gameObject);
         }
-    }
+    }*/
 }
